@@ -1,50 +1,58 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
-#include "MOUSE.H"
 #include "DRAW.H"
+#include "MOUSE.H"
 #include "WELCOME.H"
 #include "LOGIN.H"
-#include "BUILD.H"
-
-typedef struct food
+/*
+#include "LOGIN2.H"
+#include "REGIST.H"
+#include "CAFE.H"
+#include "SNACK.H"
+#include "CHECKOUT.H"
+#include "HISTORY.H"
+#include "MANAGE.H"
+#include "COUNT.H"
+#include "HELP.H"
+#include "END.H"
+*/
+typedef struct food				//save the info about food
 {	
-	char cF_number[4];
-	char cF_name[30];
-	char cF_price[5];
-	char cF_salesamout[5];
-	char cF_rate[2];
+	char number[4];
+	char name[30];
+	char price[5];
+	char salesamout[5];
+	char rate[2];
 
-	struct food *spF_next;
+	struct food *next;
 }food;
 
-typedef struct shop
+typedef struct shop				//save the info about shop
 {
-	char cS_number[4];
-	char cS_name[30];
-	char cS_salesamount[5];
-	char cS_rate[2]
-	char cS_info[50];
-	char cSF_number[4];
+	char number[4];
+	char name[30];
+	char salesamount[5];
+	char rate[2];
+	char info[50];
 
-	struct shop *spF_next;
+	struct shop *next;
 }shop;
 
-typedef struct  user    
+typedef struct  user			//save the info about user
 {
-  char cU_number[4];                  
-  char cU_account[12];
-  char cU_key[12];
-  char cU_sex[2];       
-  char cU_adress[50];
-  char cU_deal[18][2];       
+  char number[12];                  
+  char key[12];
+  char sex[2];       
+  char adress[50];
+  char deal[18][2];       
   
-  struct user *spU_next;
+  struct user *next;
 }user;
 
-typedef struct  admin   
+typedef struct  admin			//save the info about administer
 {
-  char account[8];      
+  char number[8];      
   char key[8];          
 }admin;
 

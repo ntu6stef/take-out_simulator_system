@@ -11,6 +11,10 @@
 #include "DRAW.H"
 #include "INPUT.H"
 
-int readxx(struct customer *xinxi);
+int unique1(char *s1);
+int unique2(char *s1);
+void read1(struct user *p_use);
+void read2(struct admin *p_root);
+void build1(struct user newer);
 
 #endif

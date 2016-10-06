@@ -2,7 +2,7 @@
 #define _WELCOME_H
 
 #include <dos.h>
-#include "Draw.h"
+#include "DRAW.H"
 
 void welcome(int *flag);
 

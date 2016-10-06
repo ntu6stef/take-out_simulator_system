@@ -1,51 +1,99 @@
 #include "BUILD.H"
 
-int readxx(struct customer *xinxi)                  //读取用户信息
+/* the function that judge if a file with the given name has existed in user*/
+int unique1(char *s1)
 {
-    char fileName[20] = "user\\";                     //获得文件的路径
+	FILE *fp;
+	char f_name[30]="users\\";			//save the whole file name
 	char temp[20];
-	FILE *xx;
-	strcpy(temp,xinxi->number);
-	strcat(temp, ".txt");
-	strcat(fileName, temp);
-	if((xx = fopen(fileName,"rt"))==NULL)
+	strcpy(temp,s1);
+	strcat(temp,".txt");			//add the suffix
+	strcat(f_name,temp);			//add the prefix
+	if (!access(f_name,00))				//access with the parament 00 check if the file have existed
 	{
-		printf("  ");
-	}
-	if(access(fileName, 0) != 0)//如果文件不存在
-	{
-	     pic_show(0,0,"jiemian\\wrong1.bmp");       //该帐号不存在
-	     delay(3000);
-		 return 0;
+		return 1;			//the accoutn has existed
 	}
 	else
 	{
-	    fscanf(xx, "%s", xinxi->number);
-	    fscanf(xx, "%s", xinxi->key);
-	    fscanf(xx, "%s", xinxi->name);
-	    fscanf(xx, "%s", xinxi->sex);
-		fscanf(xx, "%s", xinxi->adress);
-		fscanf(xx, "%s", xinxi->food[0]);
-		fscanf(xx, "%s", xinxi->food[1]);
-		fscanf(xx, "%s", xinxi->food[2]);
-		fscanf(xx, "%s", xinxi->food[3]);
-		fscanf(xx, "%s", xinxi->food[4]);
-		fscanf(xx, "%s", xinxi->food[5]);
-		fscanf(xx, "%s", xinxi->food[6]);
-		fscanf(xx, "%s", xinxi->food[7]);
-		fscanf(xx, "%s", xinxi->food[8]);
-		fscanf(xx, "%s", xinxi->food[9]);
-		fscanf(xx, "%s", xinxi->food[10]);
-		fscanf(xx, "%s", xinxi->food[11]);
-		fscanf(xx, "%s", xinxi->food[12]);
-		fscanf(xx, "%s", xinxi->food[13]);
-		fscanf(xx, "%s", xinxi->food[14]);
-		fscanf(xx, "%s", xinxi->food[15]);
-		fscanf(xx, "%s", xinxi->food[16]);
-		fscanf(xx, "%s", xinxi->food[17]);
-	    fclose(xx);
-	    delay(200);
-	    return 1;
+		return 0;			//the account not exist
 	}
 
+}
+
+/* the function that judge if a file with the given name has existed in admin*/
+int unique2(char *s1)
+{
+	FILE *fp;
+	char f_name[30]="admin\\";			//save the whole file name
+	char temp[20];
+	strcpy(temp,s1);
+	strcat(temp,".txt");			//add the suffix
+	strcat(f_name,temp);			//add the prefix
+	if (!access(f_name,00))				//access with the parament 00 check if the file have existed
+	{
+		return 1;			//the accoutn has existed
+	}
+	else
+	{
+		return 0;			//the account not exist
+	}
+
+}
+
+void read1(struct user *p_use)
+{
+	FILE *fp;
+	char f_name[30]="users\\";
+	char temp[20];
+	strcpy(temp,p_use->number);
+	strcat(temp,".txt");
+	strcat(f_name,temp);			//get the whole file name
+	if((fp=fopen(f_name,"rt"))==NULL)
+	{
+		printf("error when read a file");
+	}
+	else
+	{
+		fscanf(fp, "%s", p_use->number);
+		fscanf(fp, "%s", p_use->key);
+	}
+}
+void read2(struct admin *p_root)
+{
+	FILE *fp;
+	char f_name[30]="admin\\";
+	char temp[20];
+	strcpy(temp,p_root->number);
+	strcat(temp,".txt");
+	strcat(f_name,temp);			//get the whole file name
+	if((fp=fopen(f_name,"rt"))==NULL)
+	{
+		printf("error when read a file");
+	}
+	else
+	{
+		fscanf(fp, "%s", p_root->number);
+		fscanf(fp, "%s", p_root->key);
+	}
+}
+
+
+/* newly build a file to save a new customer' info */
+void build1(struct user newer)
+{
+	FILE *fp;
+	char f_name[30]="users\\";
+	char temp[20];
+	strcpy(temp,newer.number);
+	strcat(temp,".txt");
+	strcat(f_name,temp);			//get the whole file name
+	if((fp=fopen(f_name,"wt"))==NULL)
+	{
+		printf("error when newly build a file");
+	}
+	else
+	{
+		fprintf(fp,"%s %s",newer.number,newer.key);			//save the new customer'info into the file
+		fclose(fp);
+	}
 }

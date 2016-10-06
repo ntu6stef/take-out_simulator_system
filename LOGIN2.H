@@ -1,5 +1,5 @@
-#ifndef _LOGIN_H
-#define _LOGIN_H
+#ifndef _LOGIN2_H
+#define _LOGIN2_H
 
 #include <stdio.h>
 #include <conio.h>
@@ -11,8 +11,7 @@
 #include "CHINESE.H"
 #include "BUILD.H"
 #include "INPUT.H"
-#include "DTIME.H"
 
-char *login(int *flag,char *subscriber);
+char *login2(int *flag);
 
 #endif

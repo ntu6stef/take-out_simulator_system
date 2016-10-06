@@ -11,7 +11,7 @@ void choose_shop(int *flag)
 	pic_show( , ,"jiemian\\  .bmp");
 	pic_show( , ,"jiemian\\  .bmp");
 	pic_show( , ,"jiemian\\  .bmp");
-	chinese (250,10,"欢迎使用HustEleme系统，祝您购物愉快！"，BlACK,32,F);
+	chinese (250,10,"欢迎使用HustEleme系统，祝您购物愉快！"，0x0000,32,'F');
 	while(1)
 	{
 		Mouse_read(&currentplace_x,&currentplace_y,&buttons);
